@@ -1,4 +1,3 @@
-// src/TaskApp.tsx
 import React from "react";
 import { TaskItem } from "./types"; // Ensure this path is correct
 import TaskForm from "./TaskForm"; // Ensure this path is correct
@@ -18,6 +17,12 @@ const TaskApp = () => {
     setTaskAppState({ tasks: [...taskAppState.tasks, task] });
   };
 
+  const deleteTask = (taskToDelete: TaskItem) => {
+    setTaskAppState({
+      tasks: taskAppState.tasks.filter(task => task !== taskToDelete),
+    });
+  };
+
   return (
     <div className="container py-15 max-w-7xl mx-auto">
       <h1 className="text-3xl mb-2 font-bold text-slate-700">
@@ -25,7 +30,7 @@ const TaskApp = () => {
       </h1>
       <h1 className="text-lg mb-6 text-slate-600">
         <span className="font-bold">Project: </span>
-        Graduation Final Year Project (Revamp college website)
+        Desining by React.js and node.js
       </h1>
       <div className="grid grid-cols-2 gap-4">
         <div className="border border-slate-200 rounded-xl p-4">
@@ -33,7 +38,7 @@ const TaskApp = () => {
             Pending
           </h1>
           <TaskForm addTask={addTask} />
-          <TaskList tasks={taskAppState.tasks} />
+          <TaskList tasks={taskAppState.tasks} deleteTask={deleteTask} />
         </div>
       </div>
     </div>

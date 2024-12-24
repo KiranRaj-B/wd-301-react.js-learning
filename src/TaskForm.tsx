@@ -1,4 +1,3 @@
-// TaskForm.tsx
 import React from "react";
 import { TaskItem } from "./types";
 
@@ -34,11 +33,10 @@ const TaskForm: React.FC<TaskFormProps> = (props) => {
   const addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     if (formState.title.length === 0 || formState.dueDate.length === 0) {
-      return;
+      return; // Prevent adding if title or due date is empty
     }
-    // console.log("Adding task:", formState);
-    props.addTask(formState);
-    setFormState({ title: "", description: "", dueDate: "" });
+    props.addTask(formState); // Call the addTask function passed from props
+    setFormState({ title: "", description: "", dueDate: "" }); // Reset form
   };
 
   return (
@@ -88,7 +86,7 @@ const TaskForm: React.FC<TaskFormProps> = (props) => {
             type="date"
             value={formState.dueDate}
             onChange={dueDateChanged}
-            className="block py-2.5 px-0 w-full text-sm text-gray- 900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px -0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             required
           />
@@ -102,6 +100,7 @@ const TaskForm: React.FC<TaskFormProps> = (props) => {
 
         <div className="relative z-0 w-full mb-6 group">
           <button
+            id="addTaskButton" // Ensure the button has the correct ID
             type="submit"
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
@@ -113,4 +112,4 @@ const TaskForm: React.FC<TaskFormProps> = (props) => {
   );
 };
 
-export default TaskForm;
+export default TaskForm; 
