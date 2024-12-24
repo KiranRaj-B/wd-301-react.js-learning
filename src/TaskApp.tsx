@@ -1,19 +1,23 @@
+// src/TaskApp.tsx
 import React from "react";
-import { TaskItem } from "./types";
-import TaskForm from "./TaskForm";
-import TaskList from "./TaskList";
-interface TaskAppProp {}
+import { TaskItem } from "./types"; // Ensure this path is correct
+import TaskForm from "./TaskForm"; // Ensure this path is correct
+import TaskList from "./TaskList"; // Ensure this path is correct
+import { useLocalStorage } from "./hooks/useLocalStorage"; // Ensure this path is correct
+
 interface TaskAppState {
   tasks: TaskItem[];
 }
 
 const TaskApp = () => {
-  const [taskAppState, setTaskAppState] = React.useState<TaskAppState>({
+  const [taskAppState, setTaskAppState] = useLocalStorage<TaskAppState>("tasks", {
     tasks: [],
   });
+
   const addTask = (task: TaskItem) => {
     setTaskAppState({ tasks: [...taskAppState.tasks, task] });
   };
+
   return (
     <div className="container py-15 max-w-7xl mx-auto">
       <h1 className="text-3xl mb-2 font-bold text-slate-700">

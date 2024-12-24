@@ -36,7 +36,7 @@ const TaskForm: React.FC<TaskFormProps> = (props) => {
     if (formState.title.length === 0 || formState.dueDate.length === 0) {
       return;
     }
-    console.log("Adding task:", formState);
+    // console.log("Adding task:", formState);
     props.addTask(formState);
     setFormState({ title: "", description: "", dueDate: "" });
   };
